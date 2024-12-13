@@ -57,4 +57,4 @@ async def guess(ctx, number: int):
     # or a red cross mark if it wasn't
     await ctx.send(number == value)
 
-bot.run("MTMxMjA5NDA4NTUyNzM3NTk4NA.GARxzP.y9iG8iFHlmZqNs9kFzr05y7RYhF57sQSf03A6g")
+bot.run("IL MIO TAG")
