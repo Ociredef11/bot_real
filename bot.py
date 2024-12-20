@@ -1,4 +1,5 @@
 import discord
+import os,random
 from bot_logic import *
 from discord.ext import commands
 # la variabile intents contiene i permessi al bot
@@ -55,6 +56,55 @@ async def guess(ctx, number: int):
     # with your new helper function, you can add a
     # green check mark if the guess was correct,
     # or a red cross mark if it wasn't
-    await ctx.send(number == value)
+    await ctx.send(number == value) 
+
+@bot.command()
+async def mem(ctx):
+    img_name = random.choice(os.listdir('images'))
+    with open(f'images/{img_name}', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+    
+
+def get_duck_image_url():    
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('duck')
+async def duck(ctx):
+    '''Una volta chiamato il comando duck, il programma richiama la funzione get_duck_image_url'''
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
+
+
+def get_dog_image_url():    
+    url = 'https://random.dog/woof.json'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('dog(')
+async def dog(ctx):
+    '''Una volta chiamato il comando duck, il programma richiama la funzione get_duck_image_url'''
+    image_url = get_dog_image_url()
+    await ctx.send(image_url)
+
+
+def get_pockemon_image_url():    
+    url = ' https://pokeapi.co'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('pockemon')
+async def pockemon(ctx):
+    '''Una volta chiamato il comando duck, il programma richiama la funzione get_duck_image_url'''
+    image_url = get_pockemon_image_url()
+    await ctx.send(image_url)
 
 bot.run("IL MIO TAG")
