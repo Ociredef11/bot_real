@@ -13,21 +13,20 @@ async def on_ready():
     print(f'Abbiamo fatto l\'accesso come {bot.user}')
 
 dizionario = {
-    "carta": "va nel bidone della carta ,quello bianco"
-    "bottiglia di plastica " : "va nel bidone della plastica  ,quello giallo"
-    "buccia di banana " : "va nel bidone dell'umido ,quello marrone"
-    "bottiglia di vetro" : "va nel bidone del vetro ,quello grigio"
-    "lattina" : "va nel bidone del vetro ,quello grigio"
+    "carta": "va nel bidone della carta ,quello bianco",
+    "bottiglia di plastica " : "va nel bidone della plastica  ,quello giallo",
+    "buccia di banana " : "va nel bidone dell'umido ,quello marrone",
+    "bottiglia di vetro" : "va nel bidone del vetro ,quello grigio",
+    "lattina" : "va nel bidone del vetro ,quello grigio",
     "pennarelli " : "va nel bidone del secco  ,quello rosso"}
                                     
 
 @bot.command(name="ricicla")
-async def reuse(ctx,*,oggeto:str):
-    oggetto = oggeto.lower
+async def reuse(ctx,*,oggetto:str):
+    oggetto = oggetto.lower()
     if oggetto in dizionario:
         await ctx.send(dizionario[oggetto])
     else:
-         await ctx.send("non so come si ricicla questooggeto")
-
+         await ctx.send("non so come si ricicla questo oggetto")
 
 bot.run("Il Mio Token")
